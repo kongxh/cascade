@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--重置浏览器默认-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="cascade-tab">
+        <ul class="tabs">
+            <li class="active"><a href="#">省(直辖市)</a></li>
+            <li><a href="#">市</a></li>
+            <li><a href="#">区</a></li>
+        </ul>
+        <ul class="contents">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            //因为反复使用，所以先保存下来，避免不必要的检索，$代表jQuery对象
+            var $tabs = $(".cascade-tab .tabs li");
+            var $contents = $(".cascade-tab .contents li");
+            //绑定事件
+            $tabs.click(function(){
+                var $this=$(this);
+                var index=$this.index();
+                $this.addClass("active").siblings().removeClass("active");
+                $contents.eq(index).addClass("active").siblings().removeClass("active");
+            });
+        })
+    </script>
+</body>
+</html>
